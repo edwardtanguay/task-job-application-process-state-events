@@ -1,0 +1,43 @@
+body {
+	background-color: #333;
+	padding: 0 30px;
+
+	.App {
+		font-size: 1.5rem;
+		color: #ccc;
+
+		h1 {
+			font-size: 2.3rem;
+		}
+
+		.job {
+			background-color: #222;
+			padding: 20px;
+			margin: 0 0 20px 0;
+
+			.position {
+				a {
+					color: rgb(177, 110, 33);
+				}
+			}
+
+			.skills {
+				font-size: 1.2rem;
+				color: rgb(212, 212, 130);
+			}
+
+			.bulkText {
+				font-size: 0.9rem;
+			}
+		}
+
+		ul.jobList {
+			li {
+				a {
+					color: rgb(177, 110, 33);
+				}
+			}
+		}
+
+	}
+}

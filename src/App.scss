@@ -19,10 +19,27 @@ body {
 			padding: 20px;
 			margin: 0 0 20px 0;
 
-			.position {
-				a {
-					color: rgb(177, 110, 33);
+			.header {
+				display: flex;
+				justify-content: space-between;
+
+				.position {
+					a {
+						color: rgb(177, 110, 33);
+					}
 				}
+
+				.status {
+					color: #ccc;
+					font-family: monospace;
+					font-size: 1.5rem;
+					background-color: #666;
+					border: 0;
+					border-radius: 5px;
+					padding: 5px 10px;
+					cursor: pointer;
+				}
+
 			}
 
 			.skills {
@@ -33,6 +50,36 @@ body {
 			.bulkText {
 				font-size: 0.9rem;
 			}
+		}
+
+		.job.send {
+			background-color: rgb(70, 72, 70);
+		}
+
+		.job.wait {
+			background-color: rgb(79, 79, 14);
+		}
+
+		.job.interview {
+			background-color: rgb(61, 22, 22);
+		}
+
+		.job.declined {
+			background-color: #000;
+
+			.position {
+				a {
+					color: #222;
+				}
+			}
+
+			.skills {
+				color: #222;
+			}
+		}
+
+		.job.accepted {
+			background-color: rgb(7, 85, 24);
 		}
 
 		ul.jobList {

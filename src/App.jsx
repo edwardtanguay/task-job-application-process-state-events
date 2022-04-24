@@ -1,13 +1,30 @@
 import { useState } from 'react';
 import './App.scss';
-import jobs from './data/jobs.json';
+import _jobs from './data/jobs.json';
+
+_jobs.forEach((job) => {
+	job.status = 'accepted';
+});
+
+const statuses = ['send', 'wait', 'interview', 'declined', 'accepted'];
 
 function App() {
-	const [displayKind, setDisplayKind] = useState('list');
+	const [displayKind, setDisplayKind] = useState('full');
+	const [jobs, setJobs] = useState(_jobs);
 
 	const handleToggleView = () => {
 		const _displayKind = displayKind === 'full' ? 'list' : 'full';
 		setDisplayKind(_displayKind);
+	};
+
+	const handleStatusChange = (job) => {
+		let statusIndex = statuses.indexOf(job.status);
+		statusIndex++;
+		if (statusIndex > statuses.length - 1) {
+			statusIndex = 0;
+		}
+		job.status = statuses[statusIndex];
+		setJobs([...jobs]);
 	};
 
 	return (
@@ -19,14 +36,29 @@ function App() {
 					{jobs.map((job, index) => {
 						return (
 							<div key={index}>
-								<div key={index} className="job">
-									<div className="position">
-										<a href={job.url}>{job.position}</a>
+								<div
+									key={index}
+									className={`job ${job.status}`}
+								>
+									<div className="header">
+										<div className="position">
+											<a href={job.url}>{job.position}</a>
+										</div>
+										<button
+											onClick={() =>
+												handleStatusChange(job)
+											}
+											className="status"
+										>
+											{job.status}
+										</button>
 									</div>
 									<div className="skills">{job.skills}</div>
-									<div className="bulkText">
-										{job.bulkText}
-									</div>
+									{job.status !== 'declined' && (
+										<div className="bulkText">
+											{job.bulkText}
+										</div>
+									)}
 								</div>
 							</div>
 						);

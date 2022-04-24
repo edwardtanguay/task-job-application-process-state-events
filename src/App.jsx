@@ -1,12 +1,13 @@
+import { useState } from 'react';
 import './App.scss';
 import jobs from './data/jobs.json';
 
 function App() {
-	let displayKind = 'full';
+	const [displayKind, setDisplayKind] = useState('list');
 
 	const handleToggleView = () => {
-		displayKind = displayKind === 'full' ? 'list' : 'full';
-		console.log(displayKind);
+		const _displayKind = displayKind === 'full' ? 'list' : 'full';
+		setDisplayKind(_displayKind);
 	};
 
 	return (
